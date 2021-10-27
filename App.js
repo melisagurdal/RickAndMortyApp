@@ -44,7 +44,7 @@ class App extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={{ fontWeight: "bold"}}>CHARACTERS</Text>
+				<Text style={styles.header}>Characters</Text>
 				<FlatList
 				 columnWrapperStyle={{ justifyContent: 'space-between' }}
 
@@ -55,7 +55,7 @@ class App extends Component {
 						return (
 							<View key={index} style={styles.container}>
 								<Image source={{ uri: item.image }} style={styles.image} />
-								<Text style={[styles.text, { fontWeight: "bold" }]}>{item.name}</Text>
+								<Text style={[styles.text]}>{item.name}</Text>
 							</View>
 
 						)
@@ -96,10 +96,17 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		flex: 1,
-		fontSize: 20,
-		justifyContent: "center",
-		alignItems: "center"
+		fontSize: 18,
+		marginTop: 5,
+		color: "black",
+		fontFamily: "Biryani-Bold"
+	},
 
+	header: {
+		fontSize: 30,
+		marginLeft: 10,
+		color: "black",
+		fontFamily: "Biryani-Bold"
 	}
 })
 

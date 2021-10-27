@@ -5,28 +5,28 @@ import axios from 'axios';
 const API = "https://rickandmortyapi.com/api/"
 class App extends Component {
 
-	
-		constructor(props) {
-			super(props);
-	
-			this.state = {
-				characters: [],
-				currentPage: 2,
-				totalPages: 0
-			}
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			characters: [],
+			currentPage: 1,
+			totalPages: 0
 		}
-	
-		getCharacters(page = 1){
-			axios.get(`${API}character/?page=${page}`)
+	}
+
+	getCharacters(page = 1) {
+		axios.get(`${API}character/?page=${page}`)
 			.then((response) => {
 				let newData = this.state.characters;
-				let data =  response.data && response.data.results || [];
-	
-				data.map((data) => { 
+				let data = response.data && response.data.results || [];
+
+				data.map((data) => {
 					newData.push(data);
 				})
-	
-				this.setState({ 
+
+				this.setState({
 					characters: newData,
 					totalPages: response.data && response.data.info.pages || 0,
 					currentPage: page
@@ -35,83 +35,72 @@ class App extends Component {
 			.catch((error) => {
 				console.log("error", error)
 			})
-		}
-	
-		componentDidMount(){
-			this.getCharacters()
-		}
-	
-		render() {
-			return (
-				<View style={styles.container}>
-					<Text>CHARACTERS</Text>
-					<FlatList
-						style={styles.list}
-						data={this.state.characters}
-						renderItem={({item, index}) => {
-							return (
-								<View key={index} style={styles.container}>
-									
-									<Image source={{uri: item.image}} style={styles.image} resizeMode= "cover" />
-					
-									<View style={[styles.column, { marginLeft: 50}]}>
-										<Text style={[styles.text, { fontWeight: "bold"}]}>{item.name}</Text>
-								
-		
-									</View>
-								</View>
-								
-							)
-						}}
-						ListFooterComponent={() => {
-							return (<Text>-- End --</Text>)
-						}}
-						onEndReachedThreshold={0}
-						onEndReached={this.getCharacters.bind(this,this.state.currentPage + 1 )}
-						
-					/>
-				</View>
-			);
-	
-		}
 	}
+
+	componentDidMount() {
+		this.getCharacters()
+	}
+
+	render() {
+		return (
+			<View style={styles.container}>
+				<Text style={{ fontWeight: "bold"}}>CHARACTERS</Text>
+				<FlatList
+				 columnWrapperStyle={{ justifyContent: 'space-between' }}
+
+				 numColumns={2}
+					style={styles.list}
+					data={this.state.characters}
+					renderItem={({ item, index }) => {
+						return (
+							<View key={index} style={styles.container}>
+								<Image source={{ uri: item.image }} style={styles.image} />
+								<Text style={[styles.text, { fontWeight: "bold" }]}>{item.name}</Text>
+							</View>
+
+						)
+					}}
+
+				/>
+			</View>
+		);
+
+	}
+}
+
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		flexDirection: "column",
+		marginTop: 15,
+		paddingHorizontal: 10
+
+	},
+	list: {
+		flex: 1,
+		flexDirection: "column",
+
+	},
+	image: {
+		width: 180,
+		height: 180,
+		borderRadius: 25
 	
-	
-	const styles = StyleSheet.create({
-		container: {
-			flex: 1,
-			flexWrap: 'wrap',
-			flexDirection: 'row',
-			backgroundColor: '#fffd',
-			marginTop: 10
-		},
-		list: {
-			flex: 1, 
-			width: "100%", 
-			padding: 10,
-			marginTop: 10,
-			backgroundColor: 'blue'
-		},
-		image: {
-			width: 150, 
-			height: 150,
-			
-		},
-		row:{ 
-			flex: 1,
-			flexDirection: "row",
-			margin: 10,
-		
-		},
-		column: {
-			flex: 1,
-			flexDirection: "column",
-			justifyContent: "center",
-			backgroundColor: 'red'
-		},
-		text: {
-			fontSize: 20
-		}
-	})
-	
-	export default App;
+
+	},
+	row: {
+		flexDirection: "row",
+		flexWrap: "wrap",
+
+	},
+	text: {
+		flex: 1,
+		fontSize: 20,
+		justifyContent: "center",
+		alignItems: "center"
+
+	}
+})
+
+export default App;

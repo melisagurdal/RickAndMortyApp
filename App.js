@@ -60,23 +60,23 @@ class App extends Component {
                     renderItem={({ item, index }) => {
 
                         return (
-                            
+
                             <TouchableOpacity onPress={() => 'DetailScreen'}>
-    
+
                                 <View key={index} style={styles.container}>
                                     <Image source={{ uri: item.image }} style={styles.image} />
                                     <Text style={[styles.text]}>{item.name}</Text>
                                 </View>
-                              
+
                             </TouchableOpacity>
-                            
+
                         );
-                        
+
                     }}
                 />
             </View>
 
-            
+
         );
 
     }

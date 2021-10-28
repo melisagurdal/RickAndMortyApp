@@ -5,9 +5,9 @@ In this file you will find a basic React-Native android app which is uses a fetc
 #### 🤠 Demo
 ---
 
-![AppLogo](https://github.com/melisagurdal/RickAndMortyApp/blob/master/AppLogo.png)
-![MainPage](https://github.com/melisagurdal/RickAndMortyApp/blob/master/MainPage.png)
-![MainPage2](https://github.com/melisagurdal/RickAndMortyApp/blob/master/MainPage2.png)
+![AppLogo](https://github.com/melisagurdal/RickAndMortyApp/blob/master/readme-png/AppLogo.png)
+![MainPage](https://github.com/melisagurdal/RickAndMortyApp/blob/master/readme-png/MainPage.png)
+![MainPage2](https://github.com/melisagurdal/RickAndMortyApp/blob/master/readme-png/MainPage2.png)
 
 #### 🔧 Built with 
 ---

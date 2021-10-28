@@ -11,6 +11,7 @@ Working on an another page and navigate between pages! Coming soon..
 ![MainPage](https://github.com/melisagurdal/RickAndMortyApp/blob/master/readme-png/MainPage.png)
 ![MainPage2](https://github.com/melisagurdal/RickAndMortyApp/blob/master/readme-png/MainPage2.png)
 
+
 ### 🔧 Built with 
 ---
 
